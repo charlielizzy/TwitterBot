@@ -4,11 +4,11 @@ import { OBAMA_DATA } from '../mocks/twitterBot.js';
 
 jest.mock("axios")
 
-describe('TwitterBot API', () => {
-  it('should return barack obama information', async () => {
+describe('TwitterBot API fetchTwitterAccount method', () => {
+  it.only('should return barack obama information', async () => {
     axios.get.mockResolvedValue(OBAMA_DATA);
     const account = await new TwitterBot().fetchTwitterAccount();
-    expect(account).toEqual(OBAMA_DATA.data);
+    expect(account.name).toEqual('Barack Obama');
   })
 
   it('should throw an error if the API call fails', async () => {
@@ -17,3 +17,4 @@ describe('TwitterBot API', () => {
     await expect(bot.fetchTwitterAccount()).rejects.toThrow("Something went wrong");
   })
 })
+

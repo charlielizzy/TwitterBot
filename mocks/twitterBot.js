@@ -7,7 +7,7 @@ export const OBAMA_DATA = {
       listed_count: 222178
     },
     name: 'Barack Obama',
-    username: 'BarackObama',
+    username: 'Barack Obama',
     location: 'Washington, DC',
     id: '813286'
   }
