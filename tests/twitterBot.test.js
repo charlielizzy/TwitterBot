@@ -67,6 +67,7 @@ describe("TwitterBot API fetchUserByID method", () => {
 //     );
 //   });
 // });
+
 describe("TwitterBot API returnFriends method", () => {
   it("should return barack obama friends", async () => {
     axios.get.mockResolvedValue(OBAMA_DATA);
@@ -79,5 +80,31 @@ describe("TwitterBot API returnFriends method", () => {
     await expect(bot.returnFriends()).rejects.toThrow(
       "Something went wrong when fetching friends list"
     );
+  });
+});
+
+describe("TwitterBot API postRetweet method", () => {
+  it("should return retweeted as true", async () => {
+    axios.get.mockResolvedValue(TWEET_DATA);
+    const success = await new TwitterBot().postRetweet();
+    expect(data.retweeted).toEqual(true);
+  });
+  it("should throw an error if the API call fails", async () => {
+    axios.get.mockRejectedValue(new Error());
+    const bot = new TwitterBot();
+    await expect(bot.postRetweet()).rejects.toThrow("Cannot retweet");
+  });
+});
+
+describe("TwitterBot API postLike method", () => {
+  it("should return liked as true", async () => {
+    axios.get.mockResolvedValue(TWEET_DATA);
+    const success = await new TwitterBot().postRetweet();
+    expect(data.liked).toEqual(true);
+  });
+  it("should throw an error if the API call fails", async () => {
+    axios.get.mockRejectedValue(new Error());
+    const bot = new TwitterBot();
+    await expect(bot.postLike()).rejects.toThrow("Cannot like");
   });
 });

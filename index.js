@@ -41,3 +41,19 @@ const getFriends = async () => {
 };
 
 // getFriends();
+
+const postRetweet = async () => {
+  const bot = new TwitterBot();
+  const success = await bot.postRetweet();
+  console.log(success);
+};
+
+// postRetweet();
+
+const postLike = async () => {
+  const bot = new TwitterBot();
+  const success = await bot.postLike();
+  console.log(success);
+};
+
+// postLike();

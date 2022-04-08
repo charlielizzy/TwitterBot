@@ -71,7 +71,7 @@ export default class TwitterBot {
   async fetchFriends(id = "813286") {
     try {
       const response = await axios.get(`${this.url}/users/`, {
-        header: {
+        headers: {
           Authorization: `Bearer ${process.env.API_BEARER_TOKEN}`,
         },
       });
@@ -79,6 +79,44 @@ export default class TwitterBot {
       return friends;
     } catch (error) {
       throw new Error("Something went wrong when fetching friends list");
+    }
+  }
+
+  //not sure how to get response of retweeted = true / post tweet data
+  async postRetweet(userid = "1216634215", tweetid = "1512159547842048011") {
+    try {
+      const response = await axios.post(
+        `${this.url}/users/${userid}/retweets`,
+        { tweet_id: `${tweetid}` },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.API_BEARER_TOKEN}`,
+          },
+        }
+      );
+      const success = response.data;
+      return success;
+    } catch (error) {
+      throw new Error("Cannot retweet");
+    }
+  }
+
+  //same as above
+  async postLike(userid = "1216634215", tweetid = "1512159547842048011") {
+    try {
+      const response = await axios.post(
+        `${this.url}/users/${userid}/likes`,
+        { tweet_id: `${tweetid}` },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.API_BEARER_TOKEN}`,
+          },
+        }
+      );
+      const success = response.data;
+      return success;
+    } catch (error) {
+      throw new Error("Cannot like");
     }
   }
 }
