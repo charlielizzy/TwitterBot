@@ -119,4 +119,75 @@ export default class TwitterBot {
       throw new Error("Cannot like");
     }
   }
+
+  //same as above
+  async postTweet(userid = "1216634215") {
+    try {
+      const response = await axios.post(
+        `${this.url}/tweets`,
+        { text: "hello world" },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.API_BEARER_TOKEN}`,
+          },
+        }
+      );
+      const success = response.data;
+      return success;
+    } catch (error) {
+      throw new Error("Cannot post tweet");
+    }
+  }
+
+  //same as above
+  async deleteTweet(tweetid = "1512739256074125316") {
+    try {
+      const response = await axios.delete(`${this.url}/tweets`, {
+        headers: {
+          Authorization: `Bearer ${process.env.API_BEARER_TOKEN}`,
+        },
+      });
+      const success = response.data;
+      return success;
+    } catch (error) {
+      throw new Error("Cannot delete tweet");
+    }
+  }
+
+  //same as above
+  async deleteLike(userid = "1216634215", tweetid = "1512159547842048011") {
+    try {
+      const response = await axios.delete(
+        `${this.url}/users/${userid}/likes${tweetid}`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.API_BEARER_TOKEN}`,
+          },
+        }
+      );
+      const success = response.data;
+      return success;
+    } catch (error) {
+      throw new Error("Cannot remove like");
+    }
+  }
+
+  //same as above
+  async deleteRetweet(
+    userid = "1216634215",
+    source_tweetid = "1512159547842048011"
+  ) {
+    try {
+      const response = await axios.delete(
+        `${this.url}/users/${userid}/retweets/${source_tweetid}`,
+        {
+          headers: { Authorization: `Bearer ${process.env.API_BEARER_TOKEN}` },
+        }
+      );
+      const success = response.data;
+      return success;
+    } catch (error) {
+      throw new Error("Cannot remove retweet");
+    }
+  }
 }

@@ -8,7 +8,7 @@ const getAccount = async () => {
   console.log(account);
 };
 
-// getAccount();
+getAccount();
 
 const getSingleTweet = async () => {
   const bot = new TwitterBot();
@@ -16,7 +16,7 @@ const getSingleTweet = async () => {
   console.log(tweet);
 };
 
-// getSingleTweet();
+getSingleTweet();
 
 const getUserFromID = async () => {
   const bot = new TwitterBot();
@@ -24,7 +24,7 @@ const getUserFromID = async () => {
   console.log(user);
 };
 
-// getUserFromID();
+getUserFromID();
 
 const getLikedTweets = async () => {
   const bot = new TwitterBot();
@@ -32,7 +32,7 @@ const getLikedTweets = async () => {
   console.log(tweets);
 };
 
-// getLikedTweets();
+getLikedTweets();
 
 const getFriends = async () => {
   const bot = new TwitterBot();
@@ -40,7 +40,7 @@ const getFriends = async () => {
   console.log(friends);
 };
 
-// getFriends();
+getFriends();
 
 const postRetweet = async () => {
   const bot = new TwitterBot();
@@ -48,7 +48,7 @@ const postRetweet = async () => {
   console.log(success);
 };
 
-// postRetweet();
+postRetweet();
 
 const postLike = async () => {
   const bot = new TwitterBot();
@@ -56,4 +56,36 @@ const postLike = async () => {
   console.log(success);
 };
 
-// postLike();
+postLike();
+
+const postTweet = async () => {
+  const bot = new TwitterBot();
+  const success = await bot.postTweet();
+  console.log(success);
+};
+
+postTweet();
+
+const deleteTweet = async () => {
+  const bot = new TwitterBot();
+  const success = await bot.deleteTweet();
+  console.log(success);
+};
+
+deleteTweet();
+
+const deleteLike = async () => {
+  const bot = new TwitterBot();
+  const success = await bot.deleteLike();
+  console.log(success);
+};
+
+deleteLike();
+
+const deleteRetweet = async () => {
+  const bot = new TwitterBot();
+  const success = await bot.deleteRetweet();
+  console.log(success);
+};
+
+deleteRetweet();
