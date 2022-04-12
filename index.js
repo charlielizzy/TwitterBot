@@ -34,13 +34,13 @@ const getLikedTweets = async () => {
 
 getLikedTweets();
 
-const getFriends = async () => {
+const getFollowing = async () => {
   const bot = new TwitterBot();
-  const friends = await bot.fetchFriends();
+  const friends = await bot.fetchFollowing();
   console.log(friends);
 };
 
-getFriends();
+getFollowing();
 
 const postRetweet = async () => {
   const bot = new TwitterBot();

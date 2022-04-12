@@ -68,17 +68,17 @@ describe("TwitterBot API last10Likes method", () => {
   });
 });
 
-describe("TwitterBot API returnFriends method", () => {
-  it("should return barack obama friends", async () => {
+describe("TwitterBot API getFollowing method", () => {
+  it("should return barack obama following", async () => {
     axios.get.mockResolvedValue(OBAMA_DATA);
-    const user = await new TwitterBot().returnFriends();
-    expect(user.friends).toEqual(75);
+    const user = await new TwitterBot().getFollowing();
+    expect(metrics.following_count).toEqual(585948);
   });
   it("should throw an error if the API call fails", async () => {
     axios.get.mockRejectedValue(new Error());
     const bot = new TwitterBot();
-    await expect(bot.returnFriends()).rejects.toThrow(
-      "Something went wrong when fetching friends list"
+    await expect(bot.getFollowing()).rejects.toThrow(
+      "Something went wrong when fetching following list"
     );
   });
 });

@@ -67,16 +67,19 @@ export default class TwitterBot {
     }
   }
 
-  // function doesn't work but test does url
-  async fetchFriends(id = "813286") {
+  // not sure how to set up url, or locate friends list etc
+  async fetchFollowing(userid = "813286") {
     try {
-      const response = await axios.get(`${this.url}/users/`, {
-        headers: {
-          Authorization: `Bearer ${process.env.API_BEARER_TOKEN}`,
-        },
-      });
-      const friends = response.data;
-      return friends;
+      const response = await axios.get(
+        `${this.url}/users/${userid}/following`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.API_BEARER_TOKEN}`,
+          },
+        }
+      );
+      const metrics = response.public_metrics;
+      return metrics;
     } catch (error) {
       throw new Error("Something went wrong when fetching friends list");
     }

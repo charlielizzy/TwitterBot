@@ -10,7 +10,6 @@ export const OBAMA_DATA = {
     username: "Barack Obama",
     location: "Washington, DC",
     id: "813286",
-    friends: 75,
   },
 };
 
